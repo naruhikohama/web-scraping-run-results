@@ -42,7 +42,7 @@ A partir de agora vou usar o nome do meu projeto nos exemplos. Seguindo para o p
 ```bash
 cd .\resultados_ativo\ 
 ```
-Para extrair os dados com scrapy, é criado um spider que configuraremos com python. Para criar esse spider, digite o seguinte comando no terminal `scrapy genspider <nome-do -spider> <site-que-contem-os-dados>`. Não precisa se preocupar tanto com o formato do site nesse momento. Vamos inspecionar o site nas próximas etapas pra pegar o link que o site usa pra fazer requests e trocá-lo no nosso script. Por enquanto, no meu caso, ficou assim:
+Para extrair os dados com scrapy, é criado um spider que configuraremos com python. Para criar esse spider, digite o seguinte comando no terminal `scrapy genspider <nome-do -spider> <site-que-contem-os-dados>`. O site que contém os dados que quero extrair está nesse [link](https://www.ativo.com/calendario/eventos/america-do-sul/br/mg/belo-horizonte/corrida-de-rua/38542/circuito-das-estacoes-2023-primavera-belo-horizonte/), mas não precisa se preocupar tanto com o link nesse momento. Tanto que no meu caso vou colocar somente o site raiz por enquanto. Nos próximos passos vou inspecionar o site pra pegar o link da api usado pra fazer requests e trocá-lo no script. Por enquanto, no meu caso, ficou assim:
 ```bash
 scrapy genspider ativo https://www.ativo.com/
 ```
