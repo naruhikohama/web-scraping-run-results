@@ -34,8 +34,8 @@ Dentro da sua pasta de trabalho deve aparecer a seguinte estrutura de pasta:
 │   │   ├── items.py
 │   │   ├── middlewares.py
 │   │   ├── pipelines.py
-│   │   ├── settings.py
-│   ├── scrapy.cfg
+│   │   └── settings.py
+│   └── scrapy.cfg
 ```
 
 A partir de agora vou usar o nome do meu projeto nos exemplos. Seguindo para o próximo passo, de volta ao terminal navegue para a pasta do seu projeto:
@@ -59,6 +59,6 @@ Na sua estrutura de pastas, dentro da pasta `spiders` deve aparecer um script co
 │   │   ├── items.py
 │   │   ├── middlewares.py
 │   │   ├── pipelines.py
-│   │   ├── settings.py
-│   ├── scrapy.cfg
+│   │   └── settings.py
+│   └── scrapy.cfg
 ```
