@@ -1,13 +1,14 @@
 import scrapy
 import json
 
+links_resultados = json.load(open("data_scraped/links_resultados.json"))
+
+print(links_resultados)
+
 class AtivoSpider(scrapy.Spider):
     name = "ativo"
     allowed_domains = ["www.ativo.com", "webservices.esferabr.com.br"]
-    start_urls = [
-        # "https://webservices.esferabr.com.br/Ativo/ResultadoComFotos?id_evento=38542&offset=1", 
-        "https://webservices.esferabr.com.br/Ativo/ResultadoComFotos?id_evento=38563"
-        ]
+    start_urls = links_resultados
 
     def parse(self, response):
         json_response = json.loads(response.body)
@@ -30,7 +31,7 @@ class AtivoSpider(scrapy.Spider):
             mais_rapido_que = item.get('mais_rapido_que')
 
             yield {
-                'nome': nome,
+                'nome': nome.upper(),
                 'num_peito': num_peito,
                 'nome_evento': nome_evento,
                 'sexo': sexo,
@@ -45,10 +46,9 @@ class AtivoSpider(scrapy.Spider):
                 'mais_rapido_que': mais_rapido_que
             }
 
-        print(response.url.split('=')[0] + response.url.split('=')[1])
-        # if len(json_response) == 10:
-        #     next_page = response.urljoin(f"https://webservices.esferabr.com.br/Ativo/ResultadoComFotos?id_evento=38542&offset={int(response.url.split('=')[-1]) + 10}")
-        #     yield scrapy.Request(next_page, callback=self.parse)
+        if len(json_response) == 10:
+            next_page = response.urljoin(f"{response.url.rsplit('=', 1)[0]}={int(response.url.split('=')[-1]) + 10}")
+            yield scrapy.Request(next_page, callback=self.parse)
 
 
 
