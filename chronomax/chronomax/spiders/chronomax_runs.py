@@ -28,7 +28,7 @@ class ChronomaxRunsSpider(scrapy.Spider):
             }
     
             page = 0
-            while page < 100:
+            while page < 200:
                 page += 1
                 next_page = f"https://www.chronomax.com.br/index.php/Resultado/index/{page}/S"
                 if next_page:
