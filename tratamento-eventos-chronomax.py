@@ -1,4 +1,5 @@
 import pandas as pd 
+from numpy import where
 
 eventos = pd.read_csv('chronomax_runs.csv')
 
@@ -25,13 +26,15 @@ eventos_chronomax = (
         dia = lambda dff: dff['data'].str.split("-").str[2],
         # mes = lambda dff: dff['mes'].map(mes),
         data_tratada = lambda dff: dff['ano'] + "-" + dff['mes'] + "-" + dff['dia'],
-        data = lambda dff: pd.to_datetime(dff['data_tratada'])
+        data = lambda dff: pd.to_datetime(dff['data_tratada']),
+        prova = lambda dff: dff['prova'].str.upper(),
+        local_upper = lambda dff: dff['local'].str.upper(),
+        local = lambda dff: where(dff['local_upper'].str.strip() == ",", "", dff['local_upper']),
     )
     .query('data > "2022-01-01" and link.str.contains("chronomax")')
     .loc[:, ['prova', 'local', 'data', 'link']]
     .reset_index(drop=True)
 )
 
-print(eventos_chronomax.head())
-print(eventos_chronomax.shape)
+eventos_chronomax.to_csv('chronomax_runs_tratado.csv', index=False)
 
