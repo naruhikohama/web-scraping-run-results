@@ -1,5 +1,6 @@
 import scrapy
 import pandas as pd
+import json
 
 chronomax = pd.read_csv('data_scraped/chronomax_runs_tratado.csv')
 
