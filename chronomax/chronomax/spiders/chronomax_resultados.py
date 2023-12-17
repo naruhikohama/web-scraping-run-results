@@ -40,8 +40,10 @@ class ChronomaxResultadosSpider(scrapy.Spider):
 
     def parse(self, response):
         raw = response.body
+        print(type(raw))
         rows = Selector(body = raw, encoding="utf8").xpath('//table[@id="tabres"]//tr')
-        
+        print(rows)
+
         for row in rows:
             posicao = row.xpath("./td[1]/text()").get()
             # nome = Selector(body=row, encoding = 'utf8').xpath("./td[3]/text()").get()
@@ -59,9 +61,9 @@ class ChronomaxResultadosSpider(scrapy.Spider):
             # pace_medio = row.selector.xpath("./td[12]/text()").get()
 
             yield {
-                'posicao': posicao,
+                # 'posicao': posicao,
                 # 'num_peito': num_peito,
-                'nome': nome,
+                # 'nome': nome,
                 # 'equipe': equipe,
                 # 'sexo': sexo,
                 # 'categoria': categoria,

@@ -28,6 +28,7 @@ eventos_chronomax = (
         data_tratada = lambda dff: dff['ano'] + "-" + dff['mes'] + "-" + dff['dia'],
         data = lambda dff: pd.to_datetime(dff['data_tratada']),
         prova = lambda dff: dff['prova'].str.upper(),
+        link = lambda dff: dff['link'].str.strip().replace(";", ""),
         local_upper = lambda dff: dff['local'].str.upper(),
         local = lambda dff: where(dff['local_upper'].str.strip() == ",", "", dff['local_upper']),
     )
