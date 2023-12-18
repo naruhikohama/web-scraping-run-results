@@ -30,7 +30,15 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get(website)
 driver.maximize_window()
 
-linhas_atletas = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, '//table[@id="tabres"]//tr')))
+
+sleep(3)
+count = 0
+while count < 3:
+    driver.execute_script("document.getElementById('divGr').scrollTop += 5000")
+    sleep(2)
+    count += 1
+
+linhas_atletas = driver.find_elements('xpath', '//table[@id="tabres"]//tbody//tr')
 
 for linha in linhas_atletas:
     print(linha.text)
