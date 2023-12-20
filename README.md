@@ -62,3 +62,8 @@ Na sua estrutura de pastas, dentro da pasta `spiders` deve aparecer um script co
 │   │   └── settings.py
 │   └── scrapy.cfg
 ```
+## Chronomax
+Um dos sites que compilam resultados de grandes corridas, a Chronomax, apresenta os dados bem estruturados. No entanto, a extração dos dados através do scrapy, por algum motivo, não funciona como esperado.
+
+Foram feitas algumas tentativas com a dupla splash + scrapy, mas também sem sucesso. Dessa forma, por enquanto, a extração será feita com selenium. A extração com selenium é mais lenta, mas consegue extrair os dados da Chronomax.
+
