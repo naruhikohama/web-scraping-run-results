@@ -62,8 +62,16 @@ Na sua estrutura de pastas, dentro da pasta `spiders` deve aparecer um script co
 │   │   └── settings.py
 │   └── scrapy.cfg
 ```
+
 ## Chronomax
 Um dos sites que compilam resultados de grandes corridas, a Chronomax, apresenta os dados bem estruturados. No entanto, a extração dos dados através do scrapy, por algum motivo, não funciona como esperado.
 
 Foram feitas algumas tentativas com a dupla splash + scrapy, mas também sem sucesso. Dessa forma, por enquanto, a extração será feita com selenium. A extração com selenium é mais lenta, mas consegue extrair os dados da Chronomax.
+
+## TBH Esportes
+O site tbh esportes apresenta os resultados de corrida na aba de resultados, em links que levam a arquivos no formato pdf. Cada arquivo contém uma modalidade (masculino ou feminino) e uma distância (normalmente 5k ou 10k, mas podem haver mais distâncias).
+
+As informações estão dispostas em tabelas dentro do pdf. A tabela se estende ao longo de várias páginas e, para a extração delas em python, será utilizada a biblioteca `tabula-py`. Para usar essa biblioteca no windows, é necessário que o java sdk esteja instalado e adicionado ao `PATH`, nas variáveis de ambiente.
+
+
 
